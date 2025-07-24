@@ -47,6 +47,9 @@ class ThicknessConstraint(GeometricConstraint):
                 D[i] /= self.D0[i]
         funcs[self.name] = D
 
+    def evalCoords(self, config):
+        return self.DVGeo.update(self.name, config=config)
+
     def evalFunctionsSens(self, funcsSens, config):
         """
         Evaluate the sensitivity of the functions this object has and

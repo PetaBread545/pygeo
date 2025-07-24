@@ -310,6 +310,15 @@ class DVConstraints:
             for key in self.linearCon:
                 self.linearCon[key].evalFunctions(funcs)
 
+    def evalFunctionsCoordinates(self, config=None):
+        results = []
+        for conTypeKey in self.constraints:
+            constraint = self.constraints[conTypeKey]
+            for key in constraint:
+                results.append(constraint[key].evalCoords(config))
+        return results
+    
+
     def evalFunctionsSens(self, funcsSens, includeLinear=False, config=None):
         """
         Evaluate the derivative of all the 'functions' that this
