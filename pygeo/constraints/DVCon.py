@@ -315,7 +315,9 @@ class DVConstraints:
         for conTypeKey in self.constraints:
             constraint = self.constraints[conTypeKey]
             for key in constraint:
-                results.append(constraint[key].evalCoords(config))
+                if key =="thickcon":
+                    results.append(constraint[key].evalCoords(config))
+        
         return results
     
 
